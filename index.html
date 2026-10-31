@@ -26,9 +26,13 @@
   html, body { background: var(--bg); margin: 0; }
   body { color: var(--fg); font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
   .app { max-width: 680px; margin: 0 auto; padding: 40px 16px 80px; display: flex; flex-direction: column; gap: 22px; }
-  .top-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-  .logo { width: 42px; height: 42px; object-fit: contain; flex-shrink: 0; border-radius: 50%; }
-  .kicker { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: var(--sage-deep); }
+  .top-header { display: flex; align-items: center; gap: 16px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+  .logo-badge { width: 68px; height: 68px; flex-shrink: 0; border-radius: 50%; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .logo { width: 100%; height: 100%; object-fit: cover; transform: scale(1.22); }
+  .wordmark { display: flex; flex-direction: column; line-height: 1; }
+  .wordmark-name { font-weight: 800; font-size: 1.55rem; letter-spacing: -0.01em; color: var(--aubergine); }
+  .wordmark-name .xp { font-family: "Dancing Script", cursive; font-weight: 700; font-size: 1.28em; color: var(--gold); letter-spacing: 0; margin: 0 -2px 0 -1px; }
+  .wordmark-sub { margin-top: 7px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.34em; color: var(--sage-deep); }
   h1 { font-weight: 800; font-size: 2rem; line-height: 1.2; margin: 0; text-wrap: balance; }
   h2 { font-weight: 800; font-size: 1.5rem; line-height: 1.25; margin: 0; text-wrap: balance; }
   .script-accent { font-family: "Dancing Script", cursive; font-weight: 700; font-size: 1.3em; color: var(--gold); }
@@ -257,8 +261,11 @@
     }
 
     var header = h("div", { className: "top-header" },
-      h("span", { className: "kicker" }, "NeuroXpert-Academy"),
-      h("img", { className: "logo", src: LOGO, alt: "NeuroXpert-Academy Logo" })
+      h("div", { className: "logo-badge" }, h("img", { className: "logo", src: LOGO, alt: "NeuroXpert Academy Logo" })),
+      h("div", { className: "wordmark", "aria-label": "NeuroXpert Academy" },
+        h("span", { className: "wordmark-name" }, "Neuro", h("span", { className: "xp" }, "X"), "pert"),
+        h("span", { className: "wordmark-sub" }, "Academy")
+      )
     );
 
     var body;
