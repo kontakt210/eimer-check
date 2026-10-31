@@ -132,6 +132,7 @@ exports.handler = async (event) => {
       body: JSON.stringify({
         model: MODEL,
         max_tokens: MAX_TOKENS,
+        thinking: { type: "disabled" },
         system: SYSTEM,
         messages: [{ role: "user", content: "Beschreibung der Teilnehmerin:\n\n" + text }],
       }),
