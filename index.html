@@ -26,13 +26,12 @@
   html, body { background: var(--bg); margin: 0; }
   body { color: var(--fg); font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
   .app { max-width: 680px; margin: 0 auto; padding: 40px 16px 80px; display: flex; flex-direction: column; gap: 22px; }
-  .top-header { display: flex; align-items: center; gap: 16px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+  .top-header { display: flex; align-items: center; gap: 18px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
   .logo-badge { width: 68px; height: 68px; flex-shrink: 0; border-radius: 50%; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden; display: flex; align-items: center; justify-content: center; }
   .logo { width: 100%; height: 100%; object-fit: cover; transform: scale(1.22); }
-  .wordmark { display: flex; flex-direction: column; line-height: 1; }
-  .wordmark-name { font-weight: 800; font-size: 1.55rem; letter-spacing: -0.01em; color: var(--aubergine); }
-  .wordmark-name .xp { font-family: "Dancing Script", cursive; font-weight: 700; font-size: 1.28em; color: var(--gold); letter-spacing: 0; margin: 0 -2px 0 -1px; }
-  .wordmark-sub { margin-top: 7px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.34em; color: var(--sage-deep); }
+  .wordmark { font-weight: 400; font-size: 1.5rem; line-height: 1.1; letter-spacing: 0.015em; text-transform: uppercase; color: var(--aubergine); white-space: nowrap; }
+  .wordmark .xp { font-family: "Dancing Script", cursive; font-weight: 700; font-size: 1.45em; text-transform: none; letter-spacing: 0; color: var(--gold); margin: 0 3px 0 1px; position: relative; top: 0.04em; }
+  @media (max-width: 420px) { .logo-badge { width: 56px; height: 56px; } .wordmark { font-size: 1.12rem; } .top-header { gap: 14px; } }
   h1 { font-weight: 800; font-size: 2rem; line-height: 1.2; margin: 0; text-wrap: balance; }
   h2 { font-weight: 800; font-size: 1.5rem; line-height: 1.25; margin: 0; text-wrap: balance; }
   .script-accent { font-family: "Dancing Script", cursive; font-weight: 700; font-size: 1.3em; color: var(--gold); }
@@ -57,12 +56,12 @@
   @keyframes spin { to { transform: rotate(360deg); } }
   .hero { display: flex; gap: 18px; align-items: center; }
   .hero svg { flex-shrink: 0; }
-  .tag { display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--sage-deep); margin-bottom: 4px; }
+  .tag { display: inline-block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--aubergine); margin-bottom: 4px; }
   .section { display: flex; flex-direction: column; gap: 6px; }
-  .section-label { font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--sage-deep); }
+  .section-label { font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--aubergine); }
   .section p { margin: 0; line-height: 1.6; font-size: 0.99rem; }
   .gauge { display: flex; flex-direction: column; gap: 8px; }
-  .gauge-track { position: relative; height: 10px; border-radius: 999px; background: linear-gradient(90deg, var(--sage-deep), var(--gold) 55%, var(--aubergine)); }
+  .gauge-track { position: relative; height: 10px; border-radius: 999px; background: linear-gradient(90deg, #9D9196, var(--gold) 55%, var(--aubergine)); }
   .gauge-marker { position: absolute; top: 50%; width: 22px; height: 22px; border-radius: 50%; background: var(--surface); border: 3px solid var(--aubergine); transform: translate(-50%, -50%); }
   .gauge-ends { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--muted); gap: 12px; }
   .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -262,9 +261,8 @@
 
     var header = h("div", { className: "top-header" },
       h("div", { className: "logo-badge" }, h("img", { className: "logo", src: LOGO, alt: "NeuroXpert Academy Logo" })),
-      h("div", { className: "wordmark", "aria-label": "NeuroXpert Academy" },
-        h("span", { className: "wordmark-name" }, "Neuro", h("span", { className: "xp" }, "X"), "pert"),
-        h("span", { className: "wordmark-sub" }, "Academy")
+      h("div", { className: "wordmark", "aria-label": "NeuroXpert-Academy" },
+        "Neuro", h("span", { className: "xp" }, "Xpert"), "-Academy"
       )
     );
 
