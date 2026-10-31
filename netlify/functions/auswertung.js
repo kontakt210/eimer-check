@@ -3,7 +3,7 @@
 // Der Text der Teilnehmerin wird weder gespeichert noch geloggt.
 
 const MODEL = "claude-haiku-5-5";
-const MAX_TOKENS = 1100;
+const MAX_TOKENS = 2000;
 const MIN_LEN = 120;
 const MAX_LEN = 2000;
 const TIMEOUT_MS = 25000;
@@ -140,7 +140,7 @@ exports.handler = async (event) => {
     const data = await res.json();
     const raw = data && Array.isArray(data.content) ? data.content.map((c) => c.text || "").join("") : "";
     const result = clean(extractJson(raw));
-    if (!result) return reply(502, { fehler: "Die Auswertung konnte nicht gelesen werden. Bitte versuche es noch einmal." });
+    if (!result) return reply(502, { fehler: "Die Auswertung konnte nicht gelesen werden. Bitte versuche es noch einmal.", grund: String((data && data.stop_reason) || "unbekannt") });
     return reply(200, result);
   } catch (e) {
     return reply(504, { fehler: "Die Auswertung hat zu lange gedauert. Bitte versuche es noch einmal." });
